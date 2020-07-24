@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="FormAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAnbar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormGelen_mal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMusteri_siyahisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormQaime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormQaliq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormSatis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
