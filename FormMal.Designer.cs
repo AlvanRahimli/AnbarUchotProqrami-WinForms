@@ -39,15 +39,20 @@
             this.DatePickerIstehsal = new System.Windows.Forms.DateTimePicker();
             this.DatePickerSon = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.TextBoxYekun = new System.Windows.Forms.TextBox();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.NumericQiymet = new System.Windows.Forms.NumericUpDown();
             this.BtnClean = new System.Windows.Forms.Button();
             this.TextBoxId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.NumericSatis = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.RadioAlis = new System.Windows.Forms.RadioButton();
+            this.RadioSatis = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.NumericMiqdar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericQiymet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericSatis)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +96,7 @@
             // 
             this.TextBoxQablasma.Location = new System.Drawing.Point(12, 129);
             this.TextBoxQablasma.Name = "TextBoxQablasma";
-            this.TextBoxQablasma.Size = new System.Drawing.Size(192, 39);
+            this.TextBoxQablasma.Size = new System.Drawing.Size(170, 39);
             this.TextBoxQablasma.TabIndex = 2;
             // 
             // NumericMiqdar
@@ -101,7 +106,7 @@
             this.NumericMiqdar.Size = new System.Drawing.Size(186, 39);
             this.NumericMiqdar.TabIndex = 3;
             this.NumericMiqdar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumericMiqdar.ValueChanged += new System.EventHandler(this.NumericMiqdar_ValueChanged);
+            this.NumericMiqdar.ValueChanged += new System.EventHandler(this.AlisaGoreYekun);
             // 
             // label4
             // 
@@ -109,9 +114,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(12, 201);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 25);
+            this.label4.Size = new System.Drawing.Size(114, 25);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Bir ədədinin qiyməti";
+            this.label4.Text = " Alış qiyməti";
             // 
             // label5
             // 
@@ -128,14 +133,14 @@
             this.DatePickerIstehsal.Location = new System.Drawing.Point(12, 325);
             this.DatePickerIstehsal.Name = "DatePickerIstehsal";
             this.DatePickerIstehsal.Size = new System.Drawing.Size(384, 39);
-            this.DatePickerIstehsal.TabIndex = 5;
+            this.DatePickerIstehsal.TabIndex = 6;
             // 
             // DatePickerSon
             // 
             this.DatePickerSon.Location = new System.Drawing.Point(12, 427);
             this.DatePickerSon.Name = "DatePickerSon";
             this.DatePickerSon.Size = new System.Drawing.Size(384, 39);
-            this.DatePickerSon.TabIndex = 6;
+            this.DatePickerSon.TabIndex = 7;
             // 
             // label6
             // 
@@ -147,27 +152,17 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Son istifadə tarixi";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(12, 535);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 25);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Yekun qiymət";
-            // 
             // TextBoxYekun
             // 
-            this.TextBoxYekun.Location = new System.Drawing.Point(151, 527);
+            this.TextBoxYekun.Location = new System.Drawing.Point(12, 531);
             this.TextBoxYekun.Name = "TextBoxYekun";
             this.TextBoxYekun.ReadOnly = true;
-            this.TextBoxYekun.Size = new System.Drawing.Size(194, 39);
+            this.TextBoxYekun.Size = new System.Drawing.Size(157, 39);
             this.TextBoxYekun.TabIndex = 7;
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(119, 603);
+            this.BtnAdd.Location = new System.Drawing.Point(116, 627);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(162, 55);
             this.BtnAdd.TabIndex = 8;
@@ -180,14 +175,14 @@
             this.NumericQiymet.DecimalPlaces = 2;
             this.NumericQiymet.Location = new System.Drawing.Point(12, 229);
             this.NumericQiymet.Name = "NumericQiymet";
-            this.NumericQiymet.Size = new System.Drawing.Size(384, 39);
+            this.NumericQiymet.Size = new System.Drawing.Size(170, 39);
             this.NumericQiymet.TabIndex = 4;
             this.NumericQiymet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumericQiymet.ValueChanged += new System.EventHandler(this.NumericQiymet_ValueChanged);
+            this.NumericQiymet.ValueChanged += new System.EventHandler(this.AlisaGoreYekun);
             // 
             // BtnClean
             // 
-            this.BtnClean.Location = new System.Drawing.Point(339, 603);
+            this.BtnClean.Location = new System.Drawing.Point(333, 627);
             this.BtnClean.Name = "BtnClean";
             this.BtnClean.Size = new System.Drawing.Size(63, 55);
             this.BtnClean.TabIndex = 9;
@@ -213,18 +208,78 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "No.";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(210, 201);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 25);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Satış qiyməti";
+            // 
+            // NumericSatis
+            // 
+            this.NumericSatis.DecimalPlaces = 2;
+            this.NumericSatis.Location = new System.Drawing.Point(210, 229);
+            this.NumericSatis.Name = "NumericSatis";
+            this.NumericSatis.Size = new System.Drawing.Size(186, 39);
+            this.NumericSatis.TabIndex = 5;
+            this.NumericSatis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NumericSatis.ValueChanged += new System.EventHandler(this.AlisaGoreYekun);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(12, 496);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 32);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Yekun";
+            // 
+            // RadioAlis
+            // 
+            this.RadioAlis.AutoSize = true;
+            this.RadioAlis.Checked = true;
+            this.RadioAlis.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RadioAlis.Location = new System.Drawing.Point(192, 519);
+            this.RadioAlis.Name = "RadioAlis";
+            this.RadioAlis.Size = new System.Drawing.Size(195, 29);
+            this.RadioAlis.TabIndex = 11;
+            this.RadioAlis.TabStop = true;
+            this.RadioAlis.Text = "Alış qiymətinə görə";
+            this.RadioAlis.UseVisualStyleBackColor = true;
+            this.RadioAlis.CheckedChanged += new System.EventHandler(this.RadioAlis_CheckedChanged);
+            // 
+            // RadioSatis
+            // 
+            this.RadioSatis.AutoSize = true;
+            this.RadioSatis.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RadioSatis.Location = new System.Drawing.Point(192, 554);
+            this.RadioSatis.Name = "RadioSatis";
+            this.RadioSatis.Size = new System.Drawing.Size(204, 29);
+            this.RadioSatis.TabIndex = 11;
+            this.RadioSatis.Text = "Satış qiymətinə görə";
+            this.RadioSatis.UseVisualStyleBackColor = true;
+            this.RadioSatis.CheckedChanged += new System.EventHandler(this.RadioSatis_CheckedChanged);
+            // 
             // FormMalEtrafli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 670);
+            this.ClientSize = new System.Drawing.Size(414, 697);
+            this.Controls.Add(this.RadioSatis);
+            this.Controls.Add(this.RadioAlis);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.NumericSatis);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TextBoxId);
             this.Controls.Add(this.BtnClean);
             this.Controls.Add(this.NumericQiymet);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.TextBoxYekun);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.DatePickerSon);
             this.Controls.Add(this.DatePickerIstehsal);
@@ -242,8 +297,10 @@
             this.Name = "FormMalEtrafli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mal əlavə et";
+            this.Load += new System.EventHandler(this.FormMalEtrafli_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumericMiqdar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericQiymet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericSatis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,12 +319,16 @@
         private System.Windows.Forms.DateTimePicker DatePickerIstehsal;
         private System.Windows.Forms.DateTimePicker DatePickerSon;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TextBoxYekun;
         private System.Windows.Forms.Button BtnAdd;
         private System.Windows.Forms.NumericUpDown NumericQiymet;
         private System.Windows.Forms.Button BtnClean;
         private System.Windows.Forms.TextBox TextBoxId;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown NumericSatis;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RadioButton RadioAlis;
+        private System.Windows.Forms.RadioButton RadioSatis;
     }
 }

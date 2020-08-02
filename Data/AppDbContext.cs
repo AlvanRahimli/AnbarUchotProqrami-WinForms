@@ -18,26 +18,49 @@ namespace AnbarUchotu.Data
                 {
                     Id = 1,
                     MalAdi = "test mal",
-                    BirEdedinQiymeti = 150,
-                    Miqdar = 2,
+                    AlisQiymeti = 150,
+                    SatisQiymeti = 160,
+                    AnbardakiMiqdar = 2,
                     Istehsal = DateTime.Now,
                     SonIstifade = DateTime.Now.AddMonths(6),
-                    Qablasma = "100 ml",
-                    YekunQiymet = 300
+                    Qablasma = "100 ml"
                 },
                 new Mal()
                 {
                     Id = 2,
                     MalAdi = "test mal 2",
-                    BirEdedinQiymeti = 12,
-                    Miqdar = 4,
+                    AlisQiymeti = 120,
+                    SatisQiymeti = 140,
+                    AnbardakiMiqdar = 4,
                     Istehsal = DateTime.Now,
                     SonIstifade = DateTime.Now.AddMonths(6),
-                    Qablasma = "50 ml",
-                    YekunQiymet = 48
+                    Qablasma = "50 ml"
+                });
+
+            builder.Entity<Musteri>().HasData(
+                new Musteri()
+                {
+                    Id = 1,
+                    Name = "test musteri 1",
+                    SatisSayi = 15,
+                    Borc = 75,
+                    Elaqe = "+994772204323",
+                    Rayon = "Balakən"
+                },
+                new Musteri()
+                {
+                    Id = 2,
+                    Name = "test musteri 2",
+                    SatisSayi = 1,
+                    Borc = 56,
+                    Elaqe = "basqa nomre",
+                    Rayon = "Qazax"
                 });
         }
 
         public DbSet<Mal> Products { get; set; }
+        public DbSet<Musteri> Musteriler { get; set; }
+        public DbSet<Satis> Satislar { get; set; }
+        public DbSet<SatilmisMal> SatilmisMallar { get; set; }
     }
 }

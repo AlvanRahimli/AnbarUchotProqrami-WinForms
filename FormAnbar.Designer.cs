@@ -44,6 +44,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
+            this.SatisQiymeti = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // ListProducts
@@ -57,15 +58,18 @@
             this.Qablasma,
             this.Miqdar,
             this.BirEdedininQiymeti,
+            this.SatisQiymeti,
             this.YekunQiymet,
             this.IstehsalTarixi,
             this.SonTarix,
             this.Id});
             this.ListProducts.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ListProducts.FullRowSelect = true;
             this.ListProducts.HideSelection = false;
             this.ListProducts.Location = new System.Drawing.Point(12, 105);
             this.ListProducts.Name = "ListProducts";
             this.ListProducts.Size = new System.Drawing.Size(1075, 571);
+            this.ListProducts.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.ListProducts.TabIndex = 0;
             this.ListProducts.UseCompatibleStateImageBehavior = false;
             this.ListProducts.View = System.Windows.Forms.View.Details;
@@ -97,7 +101,7 @@
             // BirEdedininQiymeti
             // 
             this.BirEdedininQiymeti.Name = "BirEdedininQiymeti";
-            this.BirEdedininQiymeti.Text = "Qiymət";
+            this.BirEdedininQiymeti.Text = "Alış qiyməti";
             this.BirEdedininQiymeti.Width = 150;
             // 
             // YekunQiymet
@@ -180,6 +184,12 @@
             this.BtnSell.UseVisualStyleBackColor = true;
             this.BtnSell.Click += new System.EventHandler(this.BtnSell_Click);
             // 
+            // SatisQiymeti
+            // 
+            this.SatisQiymeti.Name = "SatisQiymeti";
+            this.SatisQiymeti.Text = "Satış qiyməti";
+            this.SatisQiymeti.Width = 150;
+            // 
             // FormAnbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -216,5 +226,6 @@
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Button BtnSell;
         private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.ColumnHeader SatisQiymeti;
     }
 }

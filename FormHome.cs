@@ -22,5 +22,11 @@ namespace AnbarUchotu
             var formAnbar = new FormAnbar();
             formAnbar.Show();
         }
+
+        private void BtnSatis_Click(object sender, EventArgs e)
+        {
+            var formSatis = new FormSatis();
+            formSatis.Show();
+        }
     }
 }

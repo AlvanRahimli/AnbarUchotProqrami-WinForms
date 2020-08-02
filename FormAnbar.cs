@@ -25,7 +25,17 @@ namespace AnbarUchotu
 
         private void BtnSell_Click(object sender, EventArgs e)
         {
-
+            FormSatis formSatis;
+            if (ListProducts.SelectedItems.Count == 0)
+            {
+                formSatis = new FormSatis();
+            }
+            else
+            {
+                var id = GetSelectedItemId();
+                formSatis = new FormSatis(new int[] { id });
+            }
+            formSatis.Show();
         }
 
         private void BtnPlus_Click(object sender, EventArgs e)
@@ -60,8 +70,9 @@ namespace AnbarUchotu
                     {
                         item.MalAdi,
                         item.Qablasma.ToString(),
-                        item.Miqdar.ToString(),
-                        ((decimal)item.BirEdedinQiymeti / 100).ToString(),
+                        item.AnbardakiMiqdar.ToString(),
+                        ((decimal)item.AlisQiymeti / 100).ToString(),
+                        ((decimal)item.SatisQiymeti / 100).ToString(),
                         ((decimal)item.YekunQiymet / 100).ToString(),
                         item.Istehsal.ToShortDateString(),
                         item.SonIstifade.ToShortDateString(),
@@ -75,6 +86,11 @@ namespace AnbarUchotu
                         newItem.ForeColor = Color.White;
                     }
 
+                    if (item.AnbardakiMiqdar == 0)
+                    {
+                        newItem.BackColor = Color.LightBlue;
+                    }
+
                     ListProducts.Items.Add(newItem).SubItems.AddRange(cols);
                     no++;
                 }
@@ -83,13 +99,8 @@ namespace AnbarUchotu
 
         private async void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (ListProducts.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Redaktə etmək üçün siyahıdan element seçin.", "Səhv", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var id = Convert.ToInt32(ListProducts.SelectedItems[0].SubItems[8].Text);
+            var id = GetSelectedItemId();
+            if (id == 0) return;
 
             using var context = new AppDbContext();
             var product = await context.Products.FirstOrDefaultAsync(p => p.Id == id);
@@ -100,12 +111,8 @@ namespace AnbarUchotu
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (ListProducts.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Silmək üçün siyahıdan element seçin.", "Səhv", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            var id = Convert.ToInt32(ListProducts.SelectedItems[0].SubItems[8].Text);
+            var id = GetSelectedItemId();
+            if (id == 0) return;
 
             using var context = new AppDbContext();
             var produkt = await context.Products.FirstOrDefaultAsync(p => p.Id == id);
@@ -123,6 +130,17 @@ namespace AnbarUchotu
             }
             ListProducts.Items.Clear();
             LoadProducts();
+        }
+
+        private int GetSelectedItemId()
+        {
+            if (ListProducts.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Əməliyyatı tamamlamaq üçün siyahıdan element seçin.", "Səhv", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0;
+            }
+            var id = Convert.ToInt32(ListProducts.SelectedItems[0].SubItems[9].Text);
+            return id;
         }
     }
 }
