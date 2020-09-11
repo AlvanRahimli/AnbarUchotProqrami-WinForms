@@ -106,27 +106,12 @@ namespace AnbarUchotu.Migrations
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "AlisQiymeti", "AnbardakiMiqdar", "Istehsal", "MalAdi", "Qablasma", "SatisQiymeti", "SonIstifade" },
-                values: new object[] { 1, 150, 2, new DateTime(2020, 8, 2, 1, 47, 2, 363, DateTimeKind.Local).AddTicks(1155), "test mal", "100 ml", 160, new DateTime(2021, 2, 2, 1, 47, 2, 363, DateTimeKind.Local).AddTicks(9485) });
+                values: new object[] { 1, 150, 2, new DateTime(2020, 9, 11, 15, 33, 29, 847, DateTimeKind.Local).AddTicks(9280), "test mal", "100 ml", 160, new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(2416) });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "AlisQiymeti", "AnbardakiMiqdar", "Istehsal", "MalAdi", "Qablasma", "SatisQiymeti", "SonIstifade" },
-                values: new object[] { 2, 12, 4, new DateTime(2020, 8, 2, 1, 47, 2, 364, DateTimeKind.Local).AddTicks(494), "test mal 2", "50 ml", 160, new DateTime(2021, 2, 2, 1, 47, 2, 364, DateTimeKind.Local).AddTicks(508) });
-
-            migrationBuilder.InsertData(
-                table: "Satislar",
-                columns: new[] { "Id", "CemiQiymet", "MusteriId", "SatisTarixi" },
-                values: new object[] { 1, 155, 1, new DateTime(2020, 8, 2, 1, 47, 2, 365, DateTimeKind.Local).AddTicks(4908) });
-
-            migrationBuilder.InsertData(
-                table: "SatilmisMallar",
-                columns: new[] { "Id", "MalAdi", "MalId", "SatilanMiqdar", "SatisId" },
-                values: new object[] { 1, null, 1, 2, 1 });
-
-            migrationBuilder.InsertData(
-                table: "SatilmisMallar",
-                columns: new[] { "Id", "MalAdi", "MalId", "SatilanMiqdar", "SatisId" },
-                values: new object[] { 2, null, 2, 4, 1 });
+                values: new object[] { 2, 120, 4, new DateTime(2020, 9, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3337), "test mal 2", "50 ml", 140, new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3350) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_SatilmisMallar_MalId",

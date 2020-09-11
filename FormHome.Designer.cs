@@ -34,6 +34,7 @@
             this.BtnQaime = new System.Windows.Forms.Button();
             this.BtnMusteriSiyahisi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAnbar
@@ -71,7 +72,7 @@
             // BtnQaime
             // 
             this.BtnQaime.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnQaime.Location = new System.Drawing.Point(12, 506);
+            this.BtnQaime.Location = new System.Drawing.Point(12, 572);
             this.BtnQaime.Name = "BtnQaime";
             this.BtnQaime.Size = new System.Drawing.Size(340, 60);
             this.BtnQaime.TabIndex = 5;
@@ -87,6 +88,7 @@
             this.BtnMusteriSiyahisi.TabIndex = 3;
             this.BtnMusteriSiyahisi.Text = "Müştəri siyahısı";
             this.BtnMusteriSiyahisi.UseVisualStyleBackColor = true;
+            this.BtnMusteriSiyahisi.Click += new System.EventHandler(this.BtnMusteriSiyahisi_Click);
             // 
             // label1
             // 
@@ -98,12 +100,24 @@
             this.label1.Text = "Bölmə\r\nseçin";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(12, 506);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(340, 60);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Satış siyaısı";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(364, 579);
+            this.ClientSize = new System.Drawing.Size(364, 641);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnMusteriSiyahisi);
             this.Controls.Add(this.BtnQaime);
@@ -126,6 +140,7 @@
         private System.Windows.Forms.Button BtnQaime;
         private System.Windows.Forms.Button BtnMusteriSiyahisi;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

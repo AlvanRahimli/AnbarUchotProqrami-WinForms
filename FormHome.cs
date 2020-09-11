@@ -28,5 +28,17 @@ namespace AnbarUchotu
             var formSatis = new FormSatis();
             formSatis.Show();
         }
+
+        private void BtnMusteriSiyahisi_Click(object sender, EventArgs e)
+        {
+            var formMusteriler = new FormMusteri_siyahisi();
+            formMusteriler.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var formSatislar = new FormSatislar();
+            formSatislar.Show();
+        }
     }
 }

@@ -35,6 +35,7 @@
             this.Qablasma = new System.Windows.Forms.ColumnHeader();
             this.Miqdar = new System.Windows.Forms.ColumnHeader();
             this.BirEdedininQiymeti = new System.Windows.Forms.ColumnHeader();
+            this.SatisQiymeti = new System.Windows.Forms.ColumnHeader();
             this.YekunQiymet = new System.Windows.Forms.ColumnHeader();
             this.IstehsalTarixi = new System.Windows.Forms.ColumnHeader();
             this.SonTarix = new System.Windows.Forms.ColumnHeader();
@@ -44,7 +45,6 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
-            this.SatisQiymeti = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // ListProducts
@@ -103,6 +103,12 @@
             this.BirEdedininQiymeti.Name = "BirEdedininQiymeti";
             this.BirEdedininQiymeti.Text = "Alış qiyməti";
             this.BirEdedininQiymeti.Width = 150;
+            // 
+            // SatisQiymeti
+            // 
+            this.SatisQiymeti.Name = "SatisQiymeti";
+            this.SatisQiymeti.Text = "Satış qiyməti";
+            this.SatisQiymeti.Width = 150;
             // 
             // YekunQiymet
             // 
@@ -184,12 +190,6 @@
             this.BtnSell.UseVisualStyleBackColor = true;
             this.BtnSell.Click += new System.EventHandler(this.BtnSell_Click);
             // 
-            // SatisQiymeti
-            // 
-            this.SatisQiymeti.Name = "SatisQiymeti";
-            this.SatisQiymeti.Text = "Satış qiyməti";
-            this.SatisQiymeti.Width = 150;
-            // 
             // FormAnbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -204,6 +204,7 @@
             this.Name = "FormAnbar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anbar";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormAnbar_Load);
             this.ResumeLayout(false);
 

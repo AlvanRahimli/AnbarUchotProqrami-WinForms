@@ -53,22 +53,22 @@ namespace AnbarUchotu.Migrations
                             Id = 1,
                             AlisQiymeti = 150,
                             AnbardakiMiqdar = 2,
-                            Istehsal = new DateTime(2020, 8, 2, 1, 47, 2, 363, DateTimeKind.Local).AddTicks(1155),
+                            Istehsal = new DateTime(2020, 9, 11, 15, 33, 29, 847, DateTimeKind.Local).AddTicks(9280),
                             MalAdi = "test mal",
                             Qablasma = "100 ml",
                             SatisQiymeti = 160,
-                            SonIstifade = new DateTime(2021, 2, 2, 1, 47, 2, 363, DateTimeKind.Local).AddTicks(9485)
+                            SonIstifade = new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(2416)
                         },
                         new
                         {
                             Id = 2,
-                            AlisQiymeti = 12,
+                            AlisQiymeti = 120,
                             AnbardakiMiqdar = 4,
-                            Istehsal = new DateTime(2020, 8, 2, 1, 47, 2, 364, DateTimeKind.Local).AddTicks(494),
+                            Istehsal = new DateTime(2020, 9, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3337),
                             MalAdi = "test mal 2",
                             Qablasma = "50 ml",
-                            SatisQiymeti = 160,
-                            SonIstifade = new DateTime(2021, 2, 2, 1, 47, 2, 364, DateTimeKind.Local).AddTicks(508)
+                            SatisQiymeti = 140,
+                            SonIstifade = new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3350)
                         });
                 });
 
@@ -148,22 +148,6 @@ namespace AnbarUchotu.Migrations
                     b.HasIndex("SatisId");
 
                     b.ToTable("SatilmisMallar");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MalId = 1,
-                            SatilanMiqdar = 2,
-                            SatisId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MalId = 2,
-                            SatilanMiqdar = 4,
-                            SatisId = 1
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.Satis", b =>
@@ -186,15 +170,6 @@ namespace AnbarUchotu.Migrations
                     b.HasIndex("MusteriId");
 
                     b.ToTable("Satislar");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CemiQiymet = 155,
-                            MusteriId = 1,
-                            SatisTarixi = new DateTime(2020, 8, 2, 1, 47, 2, 365, DateTimeKind.Local).AddTicks(4908)
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.SatilmisMal", b =>
