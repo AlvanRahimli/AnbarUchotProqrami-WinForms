@@ -57,6 +57,7 @@
             this.BtnGelen_mal.TabIndex = 2;
             this.BtnGelen_mal.Text = "Gələn mal";
             this.BtnGelen_mal.UseVisualStyleBackColor = true;
+            this.BtnGelen_mal.Click += new System.EventHandler(this.BtnGelen_mal_Click);
             // 
             // BtnSatis
             // 

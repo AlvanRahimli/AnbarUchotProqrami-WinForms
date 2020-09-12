@@ -45,6 +45,7 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnSell = new System.Windows.Forms.Button();
+            this.BtnPdf = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListProducts
@@ -190,11 +191,23 @@
             this.BtnSell.UseVisualStyleBackColor = true;
             this.BtnSell.Click += new System.EventHandler(this.BtnSell_Click);
             // 
+            // BtnPdf
+            // 
+            this.BtnPdf.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnPdf.Location = new System.Drawing.Point(373, 26);
+            this.BtnPdf.Name = "BtnPdf";
+            this.BtnPdf.Size = new System.Drawing.Size(173, 51);
+            this.BtnPdf.TabIndex = 2;
+            this.BtnPdf.Text = "PDF çıxarış";
+            this.BtnPdf.UseVisualStyleBackColor = true;
+            this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
+            // 
             // FormAnbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 688);
+            this.Controls.Add(this.BtnPdf);
             this.Controls.Add(this.BtnSell);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnEdit);
@@ -228,5 +241,6 @@
         private System.Windows.Forms.Button BtnSell;
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.ColumnHeader SatisQiymeti;
+        private System.Windows.Forms.Button BtnPdf;
     }
 }

@@ -40,5 +40,11 @@ namespace AnbarUchotu
             var formSatislar = new FormSatislar();
             formSatislar.Show();
         }
+
+        private void BtnGelen_mal_Click(object sender, EventArgs e)
+        {
+            var formGelenler = new FormGelenMallar();
+            formGelenler.Show();
+        }
     }
 }

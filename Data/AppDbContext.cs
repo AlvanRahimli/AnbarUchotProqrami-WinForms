@@ -62,5 +62,6 @@ namespace AnbarUchotu.Data
         public DbSet<Musteri> Musteriler { get; set; }
         public DbSet<Satis> Satislar { get; set; }
         public DbSet<SatilmisMal> SatilmisMallar { get; set; }
+        public DbSet<GelenMal> GelenMallar { get; set; }
     }
 }

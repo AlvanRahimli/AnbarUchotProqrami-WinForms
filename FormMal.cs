@@ -84,7 +84,16 @@ namespace AnbarUchotu
             };
 
             using var context = new AppDbContext();
-            await context.Products.AddAsync(newProduct);
+            //await context.Products.AddAsync(newProduct);
+
+            var gelenMal = new GelenMal()
+            {
+                GelenSay = newProduct.AnbardakiMiqdar,
+                Date = DateTime.Now,
+                Mal = newProduct
+            };
+
+            await context.GelenMallar.AddAsync(gelenMal);
 
             var result = await context.SaveChangesAsync();
             if (result > 0)
@@ -117,6 +126,18 @@ namespace AnbarUchotu
 
             using var context = new AppDbContext();
             var old = await context.Products.FirstOrDefaultAsync(p => p.Id == Convert.ToInt32(TextBoxId.Text));
+
+            if (edited.AnbardakiMiqdar != old.AnbardakiMiqdar)
+            {
+                var gelenMal = new GelenMal()
+                {
+                    MalId = old.Id,
+                    Date = DateTime.Now,
+                    GelenSay = edited.AnbardakiMiqdar - old.AnbardakiMiqdar
+                };
+                await context.GelenMallar.AddAsync(gelenMal);
+            }
+
             if (old != null)
             {
                 old.Id = Convert.ToInt32(TextBoxId.Text);

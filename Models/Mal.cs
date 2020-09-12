@@ -24,5 +24,6 @@ namespace AnbarUchotu.Models
         public DateTime Istehsal { get; set; }
         public DateTime SonIstifade { get; set; }
         public List<SatilmisMal> SatilmisMallar { get; set; }
+        public List<GelenMal> GelenMallar { get; set; }
     }
 }

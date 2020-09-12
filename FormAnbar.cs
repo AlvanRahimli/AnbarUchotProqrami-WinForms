@@ -1,18 +1,23 @@
 ﻿using AnbarUchotu.Data;
+using AnbarUchotu.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace AnbarUchotu
 {
     public partial class FormAnbar : Form
     {
+        public List<Mal> Mallar { get; set; }
         public FormAnbar()
         {
             InitializeComponent();
@@ -60,7 +65,7 @@ namespace AnbarUchotu
         {
             using var context = new AppDbContext();
             var ps = context.Products.ToList();
-
+            Mallar = ps;
             if (ps.Count > 0)
             {
                 int no = 1;
@@ -141,6 +146,53 @@ namespace AnbarUchotu
             }
             var id = Convert.ToInt32(ListProducts.SelectedItems[0].SubItems[9].Text);
             return id;
+        }
+
+        private void BtnPdf_Click(object sender, EventArgs e)
+        {
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var fileName = $"Chixarish{DateTime.Now.Month}.docx";
+
+            var file = DocX.Create(Path.Join(desktop, fileName));
+            file.PageLayout.Orientation = Xceed.Document.NET.Orientation.Landscape;
+
+            file.InsertParagraph("Anbardakı malların siyahısı");
+
+            Table mallarCedveli = file.AddTable(Mallar.Count + 1, 8);
+
+            mallarCedveli.Rows[0].Cells[0].Paragraphs.First().Append("No");
+            mallarCedveli.Rows[0].Cells[1].Paragraphs.First().Append("Malın adı");
+            mallarCedveli.Rows[0].Cells[2].Paragraphs.First().Append("Miqdar");
+            mallarCedveli.Rows[0].Cells[3].Paragraphs.First().Append("Alış q.");
+            mallarCedveli.Rows[0].Cells[4].Paragraphs.First().Append("Satış q.");
+            mallarCedveli.Rows[0].Cells[5].Paragraphs.First().Append("İstehsal t.");
+            mallarCedveli.Rows[0].Cells[6].Paragraphs.First().Append("Son istifadə t.");
+            mallarCedveli.Rows[0].Cells[7].Paragraphs.First().Append("Yekun qiymət");
+
+            int no = 1;
+            foreach (var item in Mallar)
+            {
+                mallarCedveli.Rows[no].Cells[0].Paragraphs.First().Append((no).ToString());
+                mallarCedveli.Rows[no].Cells[1].Paragraphs.First().Append(item.MalAdi);
+                mallarCedveli.Rows[no].Cells[2].Paragraphs.First().Append(item.AnbardakiMiqdar.ToString());
+                mallarCedveli.Rows[no].Cells[3].Paragraphs.First().Append(((double)item.AlisQiymeti / 100).ToString());
+                mallarCedveli.Rows[no].Cells[4].Paragraphs.First().Append(((double)item.SatisQiymeti / 100).ToString());
+                mallarCedveli.Rows[no].Cells[5].Paragraphs.First().Append(item.Istehsal.ToShortDateString());
+                mallarCedveli.Rows[no].Cells[6].Paragraphs.First().Append(item.SonIstifade.ToShortDateString());
+                mallarCedveli.Rows[no].Cells[7].Paragraphs.First().Append(((double)item.YekunQiymet / 100).ToString());
+                no++;
+            }
+
+            file.InsertTable(mallarCedveli);
+            try
+            {
+                file.Save();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Səhv baş verdi. Köhnə faylı bağlayın.");
+                MessageBox.Show(err.Message);
+            }
         }
     }
 }
