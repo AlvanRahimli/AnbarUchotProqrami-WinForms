@@ -6,11 +6,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace AnbarUchotu
 {
@@ -394,10 +398,114 @@ namespace AnbarUchotu
                 MessageBox.Show("Satış həyata keçirildi.", "Bildiriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LblSatilib.Visible = true;
                 BtnSat.Enabled = false;
+
+                // TODO: Qaime yarat
+                var qaime = QaimeYarat();
+                if (qaime == true)
+                {
+                    MessageBox.Show("Qaimə yaradıldı");
+                }
+                else
+                {
+                    MessageBox.Show("Qaimə yaradılarkən səhv baş verdi");
+                }
             }
             else
             {
                 MessageBox.Show("Satışı həyata keçirilərkən səhv baş verdi", "Səhv", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool QaimeYarat()
+        {
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var fileName = $"Qaime-{SecilmisMusteri.Name} {DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}.docx";
+
+            var file = DocX.Create(Path.Join(desktop, fileName));
+            file.SetDefaultFont(new Xceed.Document.NET.Font("Times new roman"), 14D, Color.Black);
+
+            // TITLE:
+            Formatting titleFormat = new Formatting
+            {
+                //Specify font family  
+                FontFamily = new Xceed.Document.NET.Font("Arial"),
+                Size = 20D,
+                Position = 40,
+                FontColor = Color.Black,
+                Bold = true
+            };
+            var header = file.InsertParagraph("QAIMƏ - No:", false, titleFormat);
+            header.Alignment = Alignment.center;
+
+            // TARIX:
+            var _ = file.InsertParagraph($"Tarix: {DateTime.Now.ToShortDateString()}");
+
+            // KIME
+            var _8 = file.InsertParagraph($"Kimə: {SecilmisMusteri.Name}");
+
+            // KIMDEN
+            var _7 = file.InsertParagraph($"Kimdən: _____________________");
+
+            // SPACING
+            file.InsertParagraph("");
+            file.InsertParagraph("");
+
+            // CEDVEL
+            Table mallarCedveli = file.AddTable(Sebet.Count + 1, 6);
+
+            mallarCedveli.Rows[0].Cells[0].Paragraphs.First().Append("No");
+            mallarCedveli.Rows[0].Cells[1].Paragraphs.First().Append("Malın adı");
+            mallarCedveli.Rows[0].Cells[2].Paragraphs.First().Append("Qablaşma");
+            mallarCedveli.Rows[0].Cells[3].Paragraphs.First().Append("Miqdar (ədəd)");
+            mallarCedveli.Rows[0].Cells[4].Paragraphs.First().Append("Qiymət (manat)");
+            mallarCedveli.Rows[0].Cells[5].Paragraphs.First().Append("Cəmi (manat)");
+
+            int no = 1;
+            foreach (var item in Sebet)
+            {
+                mallarCedveli.Rows[no].Cells[0].Paragraphs.First().Append(no.ToString());
+                mallarCedveli.Rows[no].Cells[1].Paragraphs.First().Append(item.MalAdi);
+                mallarCedveli.Rows[no].Cells[2].Paragraphs.First().Append(item.Mal.Qablasma);
+                mallarCedveli.Rows[no].Cells[3].Paragraphs.First().Append(item.SatilanMiqdar.ToString());
+                mallarCedveli.Rows[no].Cells[4].Paragraphs.First().Append(((double)item.Mal.SatisQiymeti / 100).ToString());
+                mallarCedveli.Rows[no].Cells[5].Paragraphs.First().Append(((double)(item.Mal.SatisQiymeti * item.SatilanMiqdar) / 100).ToString());
+
+                no++;
+            }
+            file.InsertTable(mallarCedveli);
+
+            // CEMI
+            var _1 = file.InsertParagraph($"Cəmi: {(double)YekunMebleg / 100} AZN");
+
+            file.InsertParagraph("");
+
+            // KOHNE BORC
+            var _2 = file.InsertParagraph($"Köhnə borc: {(double)SecilmisMusteri.Borc / 100}");
+            
+            file.InsertParagraph("");
+            file.InsertParagraph("");
+
+            // ODENIS
+            var _3 = file.InsertParagraph($"Ödəniş: ______ AZN");
+
+            // YEKUN BORC
+            var _4 = file.InsertParagraph($"Yekun borc: ______ AZN");
+
+            // TEHVIL 
+            var _5 = file.InsertParagraph($"Təhvil verdi: ______________________");
+            var _6 = file.InsertParagraph($"Təhvil aldı: ______________________");
+
+
+            try
+            {
+                file.Save();
+                return true;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Səhv baş verdi. Köhnə faylı bağlayın.");
+                MessageBox.Show(err.Message);
+                return false;
             }
         }
 

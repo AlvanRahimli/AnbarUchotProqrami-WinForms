@@ -81,6 +81,15 @@ namespace AnbarUchotu.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1.
+        /// </summary>
+        internal static string QaimeNo {
+            get {
+                return ResourceManager.GetString("QaimeNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap refresh {

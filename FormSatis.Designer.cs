@@ -238,7 +238,7 @@
             this.BtnSat.FlatAppearance.BorderSize = 3;
             this.BtnSat.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BtnSat.ForeColor = System.Drawing.Color.Black;
-            this.BtnSat.Location = new System.Drawing.Point(754, 580);
+            this.BtnSat.Location = new System.Drawing.Point(754, 556);
             this.BtnSat.Name = "BtnSat";
             this.BtnSat.Size = new System.Drawing.Size(181, 57);
             this.BtnSat.TabIndex = 7;
@@ -322,7 +322,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(502, 492);
+            this.label2.Location = new System.Drawing.Point(765, 488);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 32);
             this.label2.TabIndex = 13;
@@ -332,7 +332,7 @@
             // 
             this.LblYekun.AutoSize = true;
             this.LblYekun.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblYekun.Location = new System.Drawing.Point(591, 481);
+            this.LblYekun.Location = new System.Drawing.Point(854, 477);
             this.LblYekun.Name = "LblYekun";
             this.LblYekun.Size = new System.Drawing.Size(81, 46);
             this.LblYekun.TabIndex = 14;
@@ -343,7 +343,7 @@
             this.LblSatilib.AutoSize = true;
             this.LblSatilib.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSatilib.ForeColor = System.Drawing.Color.Red;
-            this.LblSatilib.Location = new System.Drawing.Point(362, 547);
+            this.LblSatilib.Location = new System.Drawing.Point(525, 544);
             this.LblSatilib.Name = "LblSatilib";
             this.LblSatilib.Size = new System.Drawing.Size(223, 78);
             this.LblSatilib.TabIndex = 14;
@@ -370,7 +370,7 @@
             // 
             // FormSatis
             // 
-            this.ClientSize = new System.Drawing.Size(947, 649);
+            this.ClientSize = new System.Drawing.Size(947, 631);
             this.Controls.Add(this.LblSatis);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.LblSatilib);
