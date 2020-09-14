@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AnbarUchotu.Migrations
 {
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,27 @@ namespace AnbarUchotu.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GelenMallar",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MalId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    GelenSay = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GelenMallar", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GelenMallar_Products_MalId",
+                        column: x => x.MalId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SatilmisMallar",
                 columns: table => new
                 {
@@ -93,25 +114,10 @@ namespace AnbarUchotu.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Musteriler",
-                columns: new[] { "Id", "Borc", "Elaqe", "Name", "Rayon", "SatisSayi", "SonSatis" },
-                values: new object[] { 1, 75, "+994772204323", "test musteri 1", "Balakən", 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "Musteriler",
-                columns: new[] { "Id", "Borc", "Elaqe", "Name", "Rayon", "SatisSayi", "SonSatis" },
-                values: new object[] { 2, 56, "basqa nomre", "test musteri 2", "Qazax", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "AlisQiymeti", "AnbardakiMiqdar", "Istehsal", "MalAdi", "Qablasma", "SatisQiymeti", "SonIstifade" },
-                values: new object[] { 1, 150, 2, new DateTime(2020, 9, 11, 15, 33, 29, 847, DateTimeKind.Local).AddTicks(9280), "test mal", "100 ml", 160, new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(2416) });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "AlisQiymeti", "AnbardakiMiqdar", "Istehsal", "MalAdi", "Qablasma", "SatisQiymeti", "SonIstifade" },
-                values: new object[] { 2, 120, 4, new DateTime(2020, 9, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3337), "test mal 2", "50 ml", 140, new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3350) });
+            migrationBuilder.CreateIndex(
+                name: "IX_GelenMallar_MalId",
+                table: "GelenMallar",
+                column: "MalId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SatilmisMallar_MalId",
@@ -131,6 +137,9 @@ namespace AnbarUchotu.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "GelenMallar");
+
             migrationBuilder.DropTable(
                 name: "SatilmisMallar");
 

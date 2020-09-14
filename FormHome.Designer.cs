@@ -31,7 +31,6 @@
             this.BtnAnbar = new System.Windows.Forms.Button();
             this.BtnGelen_mal = new System.Windows.Forms.Button();
             this.BtnSatis = new System.Windows.Forms.Button();
-            this.BtnQaime = new System.Windows.Forms.Button();
             this.BtnMusteriSiyahisi = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -70,16 +69,6 @@
             this.BtnSatis.UseVisualStyleBackColor = true;
             this.BtnSatis.Click += new System.EventHandler(this.BtnSatis_Click);
             // 
-            // BtnQaime
-            // 
-            this.BtnQaime.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnQaime.Location = new System.Drawing.Point(12, 572);
-            this.BtnQaime.Name = "BtnQaime";
-            this.BtnQaime.Size = new System.Drawing.Size(340, 60);
-            this.BtnQaime.TabIndex = 5;
-            this.BtnQaime.Text = "Qaimə";
-            this.BtnQaime.UseVisualStyleBackColor = true;
-            // 
             // BtnMusteriSiyahisi
             // 
             this.BtnMusteriSiyahisi.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -108,7 +97,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(340, 60);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Satış siyaısı";
+            this.button1.Text = "Satış siyahısı";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -117,11 +106,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(364, 641);
+            this.ClientSize = new System.Drawing.Size(364, 581);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnMusteriSiyahisi);
-            this.Controls.Add(this.BtnQaime);
             this.Controls.Add(this.BtnSatis);
             this.Controls.Add(this.BtnGelen_mal);
             this.Controls.Add(this.BtnAnbar);
@@ -138,7 +126,6 @@
         private System.Windows.Forms.Button BtnAnbar;
         private System.Windows.Forms.Button BtnGelen_mal;
         private System.Windows.Forms.Button BtnSatis;
-        private System.Windows.Forms.Button BtnQaime;
         private System.Windows.Forms.Button BtnMusteriSiyahisi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

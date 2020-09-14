@@ -21,7 +21,10 @@ namespace AnbarUchotu
             InitializeComponent();
 
             using var context = new AppDbContext();
-            var satislar = context.Satislar.Include(s => s.Musteri).ToList();
+            var satislar = context.Satislar
+                .Include(s => s.Musteri)
+                .OrderByDescending(s => s.SatisTarixi)
+                .ToList();
 
             Satislar = satislar;
         }

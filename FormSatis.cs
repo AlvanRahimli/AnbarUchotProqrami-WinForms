@@ -31,6 +31,7 @@ namespace AnbarUchotu
         private Mal SecilmisMal { get; set; }
         private List<SatilmisMal> Sebet { get; set; }
         private Musteri SecilmisMusteri { get; set; }
+        public DateTime SatisTarixi { get; set; }
         private int YekunMebleg
         {
             get
@@ -69,6 +70,7 @@ namespace AnbarUchotu
         {
             NumericSayi.Maximum = int.MaxValue;
             NumericYekun.Maximum = int.MaxValue;
+            button1.Enabled = false;
             await LoadCombos();
 
             switch (OpeningMode)
@@ -114,10 +116,12 @@ namespace AnbarUchotu
                             SecilmisMusteri = satis.Musteri;
                             ComboMusteri.Text = SecilmisMusteri.Name;
                             LblSatilib.Visible = true;
+                            SatisTarixi = satis.SatisTarixi;
 
                             SebetiListeYukle();
                         }
                     }
+                    button1.Enabled = true;
                     break;
                 default:
                     break;
@@ -438,7 +442,14 @@ namespace AnbarUchotu
             header.Alignment = Alignment.center;
 
             // TARIX:
-            var _ = file.InsertParagraph($"Tarix: {DateTime.Now.ToShortDateString()}");
+            if (OpeningMode == LoadMode.Details)
+            {
+                var _ = file.InsertParagraph($"Tarix: {SatisTarixi:dd/MM/yyyy}");
+            }
+            else
+            {
+                var _ = file.InsertParagraph($"Tarix: {DateTime.Now:dd/MM/yyyy}");
+            }
 
             // KIME
             var _8 = file.InsertParagraph($"Kimə: {SecilmisMusteri.Name}");
@@ -479,8 +490,9 @@ namespace AnbarUchotu
 
             file.InsertParagraph("");
 
-            // KOHNE BORC
+            
             var _2 = file.InsertParagraph($"Köhnə borc: {(double)SecilmisMusteri.Borc / 100}");
+            // KOHNE BORC
             
             file.InsertParagraph("");
             file.InsertParagraph("");
@@ -547,6 +559,11 @@ namespace AnbarUchotu
             {
                 MessageBox.Show("Səhv baş verdi", "Səhv", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QaimeYarat();
         }
     }
 }

@@ -66,5 +66,43 @@ namespace AnbarUchotu
             var musteriForm = new FormMusteri(GetSelectedItemId());
             musteriForm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var formOdenis = new FormOdenis(GetSelectedItemId());
+            formOdenis.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using var context = new AppDbContext();
+            var musteriler = context.Musteriler
+                .Include(m => m.Satislar).ToList();
+            Musteriler = musteriler;
+
+            musterilerList.Items.Clear();
+            foreach (var item in Musteriler)
+            {
+                string[] cols =
+                {
+                    item.Name,
+                    item.Rayon,
+                    ((decimal)item.Borc / 100).ToString(),
+                    item.SonSatisTarixi.ToShortDateString(),
+                    item.Elaqe,
+                    item.SatisSayi.ToString()
+                };
+
+                var newItem = new ListViewItem(item.Id.ToString());
+
+                musterilerList.Items.Add(newItem).SubItems.AddRange(cols);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var formYeniMusteri = new FormMusteri();
+            formYeniMusteri.Show();
+        }
     }
 }

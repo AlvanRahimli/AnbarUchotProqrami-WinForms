@@ -9,14 +9,36 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnbarUchotu.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200911113330_Initial")]
-    partial class Initial
+    [Migration("20200914060816_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
+
+            modelBuilder.Entity("AnbarUchotu.Models.GelenMal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("GelenSay")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MalId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MalId");
+
+                    b.ToTable("GelenMallar");
+                });
 
             modelBuilder.Entity("AnbarUchotu.Models.Mal", b =>
                 {
@@ -48,30 +70,6 @@ namespace AnbarUchotu.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AlisQiymeti = 150,
-                            AnbardakiMiqdar = 2,
-                            Istehsal = new DateTime(2020, 9, 11, 15, 33, 29, 847, DateTimeKind.Local).AddTicks(9280),
-                            MalAdi = "test mal",
-                            Qablasma = "100 ml",
-                            SatisQiymeti = 160,
-                            SonIstifade = new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(2416)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AlisQiymeti = 120,
-                            AnbardakiMiqdar = 4,
-                            Istehsal = new DateTime(2020, 9, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3337),
-                            MalAdi = "test mal 2",
-                            Qablasma = "50 ml",
-                            SatisQiymeti = 140,
-                            SonIstifade = new DateTime(2021, 3, 11, 15, 33, 29, 848, DateTimeKind.Local).AddTicks(3350)
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.Musteri", b =>
@@ -101,28 +99,6 @@ namespace AnbarUchotu.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Musteriler");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Borc = 75,
-                            Elaqe = "+994772204323",
-                            Name = "test musteri 1",
-                            Rayon = "Balakən",
-                            SatisSayi = 15,
-                            SonSatis = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Borc = 56,
-                            Elaqe = "basqa nomre",
-                            Name = "test musteri 2",
-                            Rayon = "Qazax",
-                            SatisSayi = 1,
-                            SonSatis = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.SatilmisMal", b =>
@@ -172,6 +148,15 @@ namespace AnbarUchotu.Migrations
                     b.HasIndex("MusteriId");
 
                     b.ToTable("Satislar");
+                });
+
+            modelBuilder.Entity("AnbarUchotu.Models.GelenMal", b =>
+                {
+                    b.HasOne("AnbarUchotu.Models.Mal", "Mal")
+                        .WithMany("GelenMallar")
+                        .HasForeignKey("MalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.SatilmisMal", b =>

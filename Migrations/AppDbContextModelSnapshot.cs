@@ -68,30 +68,6 @@ namespace AnbarUchotu.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AlisQiymeti = 150,
-                            AnbardakiMiqdar = 2,
-                            Istehsal = new DateTime(2020, 9, 12, 21, 1, 26, 166, DateTimeKind.Local).AddTicks(4346),
-                            MalAdi = "test mal",
-                            Qablasma = "100 ml",
-                            SatisQiymeti = 160,
-                            SonIstifade = new DateTime(2021, 3, 12, 21, 1, 26, 167, DateTimeKind.Local).AddTicks(2415)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AlisQiymeti = 120,
-                            AnbardakiMiqdar = 4,
-                            Istehsal = new DateTime(2020, 9, 12, 21, 1, 26, 167, DateTimeKind.Local).AddTicks(3366),
-                            MalAdi = "test mal 2",
-                            Qablasma = "50 ml",
-                            SatisQiymeti = 140,
-                            SonIstifade = new DateTime(2021, 3, 12, 21, 1, 26, 167, DateTimeKind.Local).AddTicks(3379)
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.Musteri", b =>
@@ -121,28 +97,6 @@ namespace AnbarUchotu.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Musteriler");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Borc = 75,
-                            Elaqe = "+994772204323",
-                            Name = "test musteri 1",
-                            Rayon = "Balakən",
-                            SatisSayi = 15,
-                            SonSatis = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Borc = 56,
-                            Elaqe = "basqa nomre",
-                            Name = "test musteri 2",
-                            Rayon = "Qazax",
-                            SatisSayi = 1,
-                            SonSatis = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("AnbarUchotu.Models.SatilmisMal", b =>

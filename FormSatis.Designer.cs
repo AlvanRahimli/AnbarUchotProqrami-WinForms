@@ -59,6 +59,7 @@
             this.LblSatilib = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.LblSatis = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NumericSayi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericYekun)).BeginInit();
             this.SuspendLayout();
@@ -322,7 +323,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(765, 488);
+            this.label2.Location = new System.Drawing.Point(729, 486);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 32);
             this.label2.TabIndex = 13;
@@ -332,7 +333,7 @@
             // 
             this.LblYekun.AutoSize = true;
             this.LblYekun.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblYekun.Location = new System.Drawing.Point(854, 477);
+            this.LblYekun.Location = new System.Drawing.Point(818, 475);
             this.LblYekun.Name = "LblYekun";
             this.LblYekun.Size = new System.Drawing.Size(81, 46);
             this.LblYekun.TabIndex = 14;
@@ -343,7 +344,7 @@
             this.LblSatilib.AutoSize = true;
             this.LblSatilib.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblSatilib.ForeColor = System.Drawing.Color.Red;
-            this.LblSatilib.Location = new System.Drawing.Point(525, 544);
+            this.LblSatilib.Location = new System.Drawing.Point(363, 535);
             this.LblSatilib.Name = "LblSatilib";
             this.LblSatilib.Size = new System.Drawing.Size(223, 78);
             this.LblSatilib.TabIndex = 14;
@@ -368,9 +369,20 @@
             this.LblSatis.TabIndex = 3;
             this.LblSatis.Text = "*seçilməyib*";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(592, 556);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 57);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Qaimə çıxar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormSatis
             // 
             this.ClientSize = new System.Drawing.Size(947, 631);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LblSatis);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.LblSatilib);
@@ -446,5 +458,6 @@
         private System.Windows.Forms.Label LblSatilib;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label LblSatis;
+        private System.Windows.Forms.Button button1;
     }
 }
